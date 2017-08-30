@@ -65,7 +65,7 @@ set showmatch                                                                   
 set nostartofline                                                               "Jump to first non-blank character
 set timeoutlen=1000 ttimeoutlen=200                                             "Reduce Command timeout for faster escape and O
 set fileencoding=utf-8                                                          "Set utf-8 encoding on write
-set wrap                                                                        "Enable word wrap
+set wrap                                                                        "Enable wo wrap
 set linebreak                                                                   "Wrap lines at convenient points
 set listchars=tab:\ \ ,trail:·                                                  "Set trails for tabs and spaces
 set list                                                                        "Enable listchars
@@ -78,9 +78,9 @@ set splitright                                                                  
 set path+=**                                                                    "Allow recursive search
 set inccommand=split                                                            "Show substitute changes immidiately in separate split
 
-syntax on                                                                       "turn on syntax highlighting
-
-silent! colorscheme hybrid_material
+syntax on          "turn on syntax highlighting
+set background=dark
+colorscheme hybrid_reverse
 
 " ================ Turn Off Swap Files ==============
 
@@ -117,7 +117,7 @@ autocmd vimrc InsertLeave * :set cul                                            
 autocmd vimrc FileType html,javascript,coffee,cucumber setlocal sw=2 sts=2 ts=2 "Set 2 indent for html
 autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
 autocmd vimrc VimEnter,BufNewFile,BufReadPost * call s:LoadLocalVimrc()         "Load per project vimrc (Used for custom test mappings, etc.)
-
+autocmd vimrc VimEnter * NERDTree
 autocmd vimrc VimEnter * set vb t_vb=
 
 autocmd vimrc FileType nerdtree syntax match hideBracketsInNerdTree
@@ -206,14 +206,13 @@ xmap <Leader>c gc
 " Map save to Ctrl + S
 map <c-s> :w<CR>
 imap <c-s> <C-o>:w<CR>
-" Also save with ,w
-nnoremap <Leader>w :w<CR>
 
 " Easier window navigation
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+nmap <Leader>w <C-w><C-w>
 " Open vertical split
 nnoremap <Leader>v <C-w>v
 
@@ -231,9 +230,6 @@ imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 smap <expr><TAB> neosnippet#jumpable() ?
 \ "\<Plug>(neosnippet_jump)"
 \: "\<TAB>"
-
-" Map for Escape key
-inoremap jj <Esc>
 
 " Yank to the end of the line
 nnoremap Y y$
@@ -301,6 +297,7 @@ nnoremap N Nzz
 vnoremap <Leader>r :call SearchAndReplace(1)<CR>
 nnoremap <Leader>r :call SearchAndReplace()<CR>
 
+nnoremap <Leader>F :NERDTreeToggle<Enter>
 " ================ plugins setups ========================
 
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'           "Ctrlp window setup

@@ -1,15 +1,12 @@
-
 ========
-This is my Neovim editor setup, with zsh and tmux configurations.
-Feel free to fork it
-and submit a pull request if you found any bug.
-
+kristijanhusak's dotfiles altered to my liking and modified to work on OSX(relies on brew being installed).
+ 
 **Warning**: Install script removes all previous configuration (zshrc, oh-my-zsh, nvim, tmux)
 
 Installation
 -----------
 
-    $ git clone https://github.com/kristijanhusak/neovim-config.git ~/neovim-config
+    $ git clone https://github.com/bldh/neovim-config.git ~/neovim-config
     $ cd ~/neovim-config
     $ chmod +x ./install.sh
     $ ./install.sh

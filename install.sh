@@ -1,6 +1,6 @@
 #/bin/sh
 rm -rf ~/.config/nvim ~/.tmux.conf ~/.zshrc ~/.oh-my-zsh \
-&& sudo apt-get install silversearcher-ag \
+&& brew install the_silver_searcher \
 && curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh \
 && sh ./dein_installer.sh ~/.config/nvim/bundle \
 && ln -s $(pwd)/init.vim ~/.config/nvim/init.vim \
