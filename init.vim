@@ -24,7 +24,6 @@ if dein#load_state(s:bundle_dir)
     call dein#add('duff/vim-bufonly')
     call dein#add('gregsexton/MatchTag')
     call dein#add('sheerun/vim-polyglot')
-    call dein#add('kristijanhusak/vim-hybrid-material')
     call dein#add('Shougo/deoplete.nvim')
     call dein#add('Shougo/neosnippet')
     call dein#add('honza/vim-snippets')
@@ -33,6 +32,7 @@ if dein#load_state(s:bundle_dir)
     call dein#add('xolox/vim-misc')
     call dein#add('xolox/vim-notes')
     call dein#add('galooshi/vim-import-js', { 'build': 'npm install -g import-js' })
+    call dein#add('mhartington/oceanic-next')
 
     call dein#end()
     call dein#save_state()
@@ -80,7 +80,7 @@ set inccommand=split                                                            
 
 syntax on          "turn on syntax highlighting
 set background=dark
-colorscheme hybrid_reverse
+colorscheme OceanicNext
 
 " ================ Turn Off Swap Files ==============
 
@@ -111,13 +111,9 @@ augroup vimrc
 augroup END
 
 autocmd vimrc BufWritePre * :call s:StripTrailingWhitespaces()                  "Auto-remove trailing spaces
-autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              "Remove unused markers for snippets
-autocmd vimrc InsertEnter * :set nocul                                          "Remove cursorline highlight
-autocmd vimrc InsertLeave * :set cul                                            "Add cursorline highlight in normal mode
 autocmd vimrc FileType html,javascript,coffee,cucumber setlocal sw=2 sts=2 ts=2 "Set 2 indent for html
 autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
 autocmd vimrc VimEnter,BufNewFile,BufReadPost * call s:LoadLocalVimrc()         "Load per project vimrc (Used for custom test mappings, etc.)
-autocmd vimrc VimEnter * NERDTree
 autocmd vimrc VimEnter * set vb t_vb=
 
 autocmd vimrc FileType nerdtree syntax match hideBracketsInNerdTree
@@ -348,3 +344,5 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '                                
 let g:jsx_ext_required = 1                                                      "Force jsx extension for jsx filetype
 
 let g:notes_directories = ['~/notes']                                           "Directory for notes
+let g:nerdtree_tabs_open_on_gui_startup=0
+let g:NERDTreeQuitOnOpen = 1
